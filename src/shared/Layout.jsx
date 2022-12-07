@@ -11,7 +11,7 @@ const layoutStyles = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  minHeight: "90vh",
+  // minHeight: "90vh",
 };
 
 function Layout({ children }) {

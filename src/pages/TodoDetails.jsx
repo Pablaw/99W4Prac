@@ -16,11 +16,15 @@ function TodoDetails() {
   const todoList = useSelector((state) => state.todo.todoArr);
   const findTodoDetail = todoList.find((todo) => todo.id === Number(id));
   console.log(findTodoDetail);
-
-  const ContainerStyles = {
+  const DetailLayout = {
     width: "100%",
     display: "flex",
     flexDirection: "column",
+  };
+  const ContainerStyles = {
+    display: "flex",
+    alignItems: "center",
+    minHeight: "90vh",
   };
   const DetailTodoContainer = {
     width: "600px",
@@ -46,23 +50,25 @@ function TodoDetails() {
     // alignItems: "center",
   };
   return (
-    <div style={{ ...ContainerStyles }}>
+    <div style={{ ...DetailLayout }}>
       <Header pageTitle={pageTitle} />
-      <div style={{ ...DetailTodoContainer }}>
-        <div style={{ ...DetailTodoHeader }}>
-          <div>TODO-ID: {id}</div>
-          <CustomButton
-            borderColor="rgb(141, 133, 133)"
-            color="rgb(102, 94, 94)"
-            txt="이전으로"
-            onClick={() => {
-              navigate(-1);
-            }}
-          />
-        </div>
-        <div style={{ ...DetailContentStyles }}>
-          <h1>{findTodoDetail.title}</h1>
-          <div>{findTodoDetail.body}</div>
+      <div style={{ ...ContainerStyles }}>
+        <div style={{ ...DetailTodoContainer }}>
+          <div style={{ ...DetailTodoHeader }}>
+            <div>TODO-ID: {id}</div>
+            <CustomButton
+              borderColor="rgb(141, 133, 133)"
+              color="rgb(102, 94, 94)"
+              txt="이전으로"
+              onClick={() => {
+                navigate(-1);
+              }}
+            />
+          </div>
+          <div style={{ ...DetailContentStyles }}>
+            <h1>{findTodoDetail.title}</h1>
+            <div>{findTodoDetail.body}</div>
+          </div>
         </div>
       </div>
     </div>
