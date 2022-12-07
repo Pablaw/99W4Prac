@@ -1,6 +1,7 @@
 import { createStore } from "redux";
 import { combineReducers } from "redux";
-import counter from "../modules/counter"; // !Store와 module 연결
+// !Store와 module 연결
+import todo from "../modules/todo";
 
 /*
 1. createStore()
@@ -17,7 +18,7 @@ combineReducers은 여러 개의 독립적인 reducer의 반환 값을 하나의
 */
 
 const rootReducer = combineReducers({
-  counter: counter,
+  todo: todo,
 });
 const store = createStore(rootReducer);
 

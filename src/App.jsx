@@ -1,11 +1,12 @@
-import React from "react";
-import styled from "styled-components"; // !styled-components 임포트
-import { useState } from "react";
-import { useEffect } from "react";
-import { useSelector } from "react-redux"; // !Store에 연결된 module 사용하기 위해 컴포넌트에서 Store 조회 (React.redux의 hook)
-import { useDispatch } from "react-redux"; // !Action 객체를 Reducer에게 보내기 위해 사용(React.redux의 hook)
+// import React from "react";
+// import styled from "styled-components";
+// // !styled-components 임포트
+// import { useState } from "react";
+// import { useEffect } from "react";
+// import { useSelector } from "react-redux"; // !Store에 연결된 module 사용하기 위해 컴포넌트에서 Store 조회 (React.redux의 hook)
+// import { useDispatch } from "react-redux"; // !Action 객체를 Reducer에게 보내기 위해 사용(React.redux의 hook)
 
-// !styled-components props 사용하기
+// // !styled-components props 사용하기
 // const Stbox = styled.div`
 //   width: 100px;
 //   height: 100px;
@@ -104,31 +105,89 @@ import { useDispatch } from "react-redux"; // !Action 객체를 Reducer에게 �
 // // src/App.js
 // // ! redux ducks, thunks, epics
 
-const App = () => {
-  //   const counterStore = useSelector((state) => state); 스토어에 state 값 조회
-  //   const counterStore = useSelector((state) => state);
-  const number = useSelector((state) => state.counter.number);
-  const dispatch = useDispatch();
-  console.log(number);
-  return (
-    <div>
-      <div>Count: {number}</div>
-      <button
-        onClick={() => {
-          dispatch({ type: "MINUS_ONE" });
-        }}
-      >
-        -1
-      </button>
-      <button
-        onClick={() => {
-          dispatch({ type: "PLUS_ONE" });
-        }}
-      >
-        +1
-      </button>
-    </div>
-  );
-};
+// import { plusOne, minusOne } from "./redux/modules/counter";
+
+// const App = () => {
+//   //   const counterStore = useSelector((state) => state); 스토어에 state 값 조회
+//   //   const counterStore = useSelector((state) => state);
+//   const number = useSelector((state) => state.counter.number);
+//   const dispatch = useDispatch();
+//   console.log(number);
+//   return (
+//     <div>
+//       <div>Count: {number}</div>
+//       <button
+//         onClick={() => {
+//           // !액션 객체, 리듀서에게 명령 type 키 값 필요
+//           dispatch(minusOne());
+//           // !dispatch는 hook 임포트 후 함수 형태로 작성
+//         }}
+//       >
+//         -1
+//       </button>
+//       <button
+//         onClick={() => {
+//           // !액션 객체, 리듀서에게 명령 type 키 값 필요
+//           dispatch(plusOne());
+//           // !dispatch는 hook 임포트 후 함수 형태로 작성
+//         }}
+//       >
+//         +1
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+// !======Redux 학습 내용=====!
+
+// import React from "react";
+// import { useState } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { addNumber, substractNumber } from "./redux/modules/counter";
+
+// const App = () => {
+//   const [number, setNumber] = useState(0);
+//   const onChangeHandler = (e) => {
+//     let value = e.target.value;
+//     setNumber(Number(value));
+//   };
+
+//   const globalNumber = useSelector((state) => state.counter.number);
+//   // !더하기 dispatch 핸들러 함수, onChange 인풋값 state로 가져옴
+//   const addNumberHandler = () => {
+//     dispatch(addNumber(number));
+//     setNumber("");
+//   };
+//   // !빼기 dispatch 핸들러 함수, onChange 인풋값 state로 가져옴
+//   const substractNumberHandler = () => {
+//     dispatch(substractNumber(number));
+//     setNumber("");
+//   };
+//   const dispatch = useDispatch();
+//   return (
+//     <div>
+//       <div>{globalNumber}</div>
+//       <input type="number" value={number} onChange={onChangeHandler} />
+//       <button onClick={addNumberHandler}>더하기</button>
+//       <button onClick={substractNumberHandler}>빼기</button>
+//     </div>
+//   );
+// };
+
+// !======Redux 학습 내용=====!
+
+// !======react-router-dom 학습 내용=====!
+import Router from "./shared/Router";
+
+function App() {
+  return <Router />;
+}
+
+// ?HTTP, URL, URI?
+// ?useMemo, 최적화 React Hook
+// ?CodeSandbox 다른 사람 코드 찾아보기.
+// !React query, Redux query, Recoil
 
 export default App;

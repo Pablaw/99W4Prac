@@ -1,9 +1,9 @@
 function CustomButton(props) {
-  const { color, onClick, txt } = props; // 구조분해할당
+  const { color, bgcolor, onClick, txt } = props; // 구조분해할당
   const btnStyle = {
-    backgroundColor: color,
+    backgroundColor: bgcolor,
     border: "none",
-    color: "#fff",
+    color: color,
     fontWeight: "bold",
     borderRadius: "8px",
     cursor: "pointer",
