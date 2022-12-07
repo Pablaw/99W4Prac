@@ -3,6 +3,13 @@ import { combineReducers } from "redux";
 // !Store와 module 연결
 import todo from "../modules/todo";
 
+const rootReducer = combineReducers({
+  todo: todo,
+});
+const store = createStore(rootReducer);
+
+export default store;
+
 /*
 1. createStore()
 리덕스의 가장 핵심이 되는 스토어를 만드는 메소드(함수) 입니다. 
@@ -16,10 +23,3 @@ import todo from "../modules/todo";
 이때 애플리케이션이 복잡해지게 되면 reducer 부분을 여러 개로 나눠야 하는 경우가 발생합니다. 
 combineReducers은 여러 개의 독립적인 reducer의 반환 값을 하나의 상태 객체로 만들어줍니다.
 */
-
-const rootReducer = combineReducers({
-  todo: todo,
-});
-const store = createStore(rootReducer);
-
-export default store;

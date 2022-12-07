@@ -3,15 +3,25 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import CustomButton from "../components/CustomButton";
+import Header from "../components/Header";
 
 function TodoDetails() {
-  const { id } = useParams();
   const navigate = useNavigate();
+
+  const { id } = useParams();
+
+  let pageTitle = "";
+  id ? (pageTitle = "🔍디테일") : (pageTitle = "🏠메인");
 
   const todoList = useSelector((state) => state.todo.todoArr);
   const findTodoDetail = todoList.find((todo) => todo.id === Number(id));
   console.log(findTodoDetail);
 
+  const ContainerStyles = {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+  };
   const DetailTodoContainer = {
     width: "600px",
     height: "400px",
@@ -19,7 +29,8 @@ function TodoDetails() {
     borderRadius: "10px",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    margin: "0 auto",
+    // justifyContent: "space-between",
   };
   const DetailTodoHeader = {
     display: "flex",
@@ -28,21 +39,32 @@ function TodoDetails() {
     padding: "0 24px",
     alignItems: "center",
   };
+  const DetailContentStyles = {
+    display: "flex",
+    flexDirection: "column",
+    marginLeft: "24px",
+    // alignItems: "center",
+  };
   return (
-    <div style={{ ...DetailTodoContainer }}>
-      <div style={{ ...DetailTodoHeader }}>
-        <div>TODO-ID: {id}</div>
-        <CustomButton
-          bgcolor="#eeeeee"
-          color="black"
-          txt="이전으로"
-          onClick={() => {
-            navigate(-1);
-          }}
-        />
+    <div style={{ ...ContainerStyles }}>
+      <Header pageTitle={pageTitle} />
+      <div style={{ ...DetailTodoContainer }}>
+        <div style={{ ...DetailTodoHeader }}>
+          <div>TODO-ID: {id}</div>
+          <CustomButton
+            borderColor="rgb(141, 133, 133)"
+            color="rgb(102, 94, 94)"
+            txt="이전으로"
+            onClick={() => {
+              navigate(-1);
+            }}
+          />
+        </div>
+        <div style={{ ...DetailContentStyles }}>
+          <h1>{findTodoDetail.title}</h1>
+          <div>{findTodoDetail.body}</div>
+        </div>
       </div>
-      <h2>{findTodoDetail.title}</h2>
-      <div>{findTodoDetail.body}</div>
     </div>
   );
 }

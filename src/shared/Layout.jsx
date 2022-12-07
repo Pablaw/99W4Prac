@@ -1,5 +1,4 @@
 // src/shared/Layout.js
-
 import React from "react";
 
 const ContainerStyles = {
@@ -7,18 +6,6 @@ const ContainerStyles = {
   maxWidth: "1200px",
   minWidth: "800px",
 };
-
-const HeaderStyles = {
-  alignItems: "center",
-  border: "1px solid #ddd",
-  display: "flex",
-  height: "50px",
-  justifyContent: "space-between",
-  padding: "0 20px",
-  backgroundColor: "#0e1116",
-  color: "white",
-};
-
 const layoutStyles = {
   display: "flex",
   flexDirection: "column",
@@ -27,19 +14,9 @@ const layoutStyles = {
   minHeight: "90vh",
 };
 
-function Header() {
-  return (
-    <div style={{ ...HeaderStyles }}>
-      <div>My Todo List</div>
-      <div>React</div>
-    </div>
-  );
-}
-
 function Layout({ children }) {
   return (
     <div style={{ ...ContainerStyles }}>
-      <Header />
       <div style={{ ...layoutStyles }}>{children}</div>
     </div>
   );

@@ -15,7 +15,6 @@ const TodoCard = (props) => {
 
   const doneTodoHandler = (props) => {
     // 맵으로 상태 변경한 요소 포함 새로운 배열 반환
-    console.log(props);
     dispatch(
       doneTodo(
         props.todoList.map((todo) =>
@@ -33,11 +32,18 @@ const TodoCard = (props) => {
     );
   };
   const TodoCardStyles = {
-    border: "2px solid #fff",
+    border: "2px solid #ffff",
     borderRadius: "12px",
     padding: "12px 24px 24px",
     width: "270px",
     boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+  };
+  const ViewDetailPage = {
+    textDecoration: "none",
+    color: "#655626",
+    // border: "1px solid #e6e3e3",
+    borderRadius: "10px",
+    padding: "5px 5px",
   };
   const ButtonStyles = {
     display: "flex",
@@ -47,13 +53,16 @@ const TodoCard = (props) => {
   return (
     <div>
       <div style={{ ...TodoCardStyles }}>
-        <Link to={`detail/${props.todo.id}`}>상세보기</Link>
+        <Link style={{ ...ViewDetailPage }} to={`detail/${props.todo.id}`}>
+          🔍 상세보기
+        </Link>
+
         <h3 style={{ wordWrap: "break-word" }}>{props.todo.title}</h3>
         <div style={{ wordWrap: "break-word" }}>{props.todo.body}</div>
         <div style={{ ...ButtonStyles }}>
           <CustomButton
-            color="#fff"
-            bgcolor="#d64553"
+            color="black"
+            borderColor="#d64553"
             txt="삭제하기"
             onClick={() => {
               deleteTodoHandler(props.todo.id);
@@ -62,8 +71,8 @@ const TodoCard = (props) => {
             삭제하기
           </CustomButton>
           <CustomButton
-            color="#fff"
-            bgcolor="green"
+            color="black"
+            borderColor="green"
             txt={props.todo.isDone === true ? "취소" : "완료"}
             onClick={() => {
               doneTodoHandler(props);

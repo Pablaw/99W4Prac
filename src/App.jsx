@@ -1,3 +1,16 @@
+import Router from "./shared/Router";
+
+function App() {
+  return <Router />;
+}
+
+export default App;
+
+// ?HTTP, URL, URI?
+// ?useMemo, 최적화 React Hook
+// ?CodeSandbox 다른 사람 코드 찾아보기.
+// !React query, Redux query, Recoil
+
 // import React from "react";
 // import styled from "styled-components";
 // // !styled-components 임포트
@@ -179,15 +192,3 @@
 // !======Redux 학습 내용=====!
 
 // !======react-router-dom 학습 내용=====!
-import Router from "./shared/Router";
-
-function App() {
-  return <Router />;
-}
-
-// ?HTTP, URL, URI?
-// ?useMemo, 최적화 React Hook
-// ?CodeSandbox 다른 사람 코드 찾아보기.
-// !React query, Redux query, Recoil
-
-export default App;

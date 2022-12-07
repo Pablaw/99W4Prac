@@ -12,17 +12,25 @@ const FormStyles = {
   padding: "30px",
   display: "flex",
 };
+const InputGroupStyles = {
+  alignItems: "center",
+  display: "flex",
+  justifyContent: "space-between",
+  gap: "20px",
+  width: "100%",
+};
+const InputContainer = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  width: "65%",
+};
 const InputStyles = {
   border: "none",
   borderRadius: "12px",
   height: "40px",
   padding: "0 12px",
   width: "240px",
-};
-const InputGroupStyles = {
-  alignItems: "center",
-  display: "flex",
-  gap: "20px",
 };
 
 const Form = () => {
@@ -48,9 +56,6 @@ const Form = () => {
     };
     if (state.title && state.body !== "") {
       dispatch(addTodo(newTodo));
-      //   setTodos([...todos, newTodo]);
-      // setTitle("");
-      // setBody("");
       setState({ title: "", body: "" });
     }
     titleInput.current.focus();
@@ -58,33 +63,33 @@ const Form = () => {
   return (
     <div style={{ ...FormStyles }}>
       <form style={{ ...InputGroupStyles }}>
-        <label className="form-label">{"제목"}</label>
-        <input
-          style={{ ...InputStyles }}
-          id="title"
-          maxLength={30}
-          className="add-input"
-          value={state.title}
-          // 인풋 이벤트로 들어온 입력 값을 name의 값으로 업데이트
-          // onChange={(e) => setTitle(e.target.value)}
-          onChange={eventHander}
-          ref={titleInput}
-        />
-        {/* 제한조건 유효값 입력, 빈칸 제한 */}
-        <label className="form-label">{"내용"}</label>
-        <input
-          style={{ ...InputStyles }}
-          id="body"
-          maxLength={35}
-          className="add-input"
-          value={state.body}
-          // 인풋 이벤트로 들어온 입력 값을 age의 값으로 업데이트
-          // onChange={(e) => setBody(e.target.value)}
-          onChange={eventHander}
-        />
+        <div style={{ ...InputContainer }}>
+          <label className="form-label">{"제목"}</label>
+          <input
+            style={{ ...InputStyles }}
+            id="title"
+            maxLength={30}
+            className="add-input"
+            value={state.title}
+            // 인풋 이벤트로 들어온 입력 값을 name의 값으로 업데이트
+            onChange={eventHander}
+            ref={titleInput}
+          />
+          <label className="form-label">{"내용"}</label>
+          <input
+            style={{ ...InputStyles }}
+            id="body"
+            maxLength={35}
+            className="add-input"
+            value={state.body}
+            // 인풋 이벤트로 들어온 입력 값을 age의 값으로 업데이트
+            onChange={eventHander}
+          />
+        </div>
+
         <CustomButton
-          color="#fff"
-          bgcolor="teal"
+          color="black"
+          borderColor="teal"
           txt="추가하기"
           onClick={addTodoHandler}
         >
